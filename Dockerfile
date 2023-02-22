@@ -8,16 +8,16 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install app dependencies
-RUN yarn install --network-timeout 100000
+RUN npm install 
 
 # Copy the rest of the app source code to /app
 COPY . .
 
 # Build the app
-RUN yarn build
+RUN npm run build
 
 # Expose port 3000
 EXPOSE 3000
 
 # Start the app
-CMD ["yarn", "start"]
+CMD ["npm", "start"]
