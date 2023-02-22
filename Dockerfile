@@ -5,7 +5,7 @@ FROM node:14-alpine
 WORKDIR /app
 
 # Copy package.json and package-lock.json to /app
-COPY package*.json yarn.lock ./
+COPY package*.json ./
 
 # Install app dependencies
 RUN yarn install --network-timeout 100000
