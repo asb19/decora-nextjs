@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a parent image
-FROM node:14-alpine
+FROM node:16-alpine
 
 # Set the working directory to /app
 WORKDIR /app
@@ -7,8 +7,10 @@ WORKDIR /app
 # Copy package.json and package-lock.json to /app
 COPY package*.json ./
 
+RUN npm config set registry https://registry.npmjs.org/
+
 # Install app dependencies
-RUN npm install -g npm 
+RUN npm install
 
 # Copy the rest of the app source code to /app
 COPY . .
