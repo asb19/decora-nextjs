@@ -15,7 +15,7 @@ type Props = {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   // const stripe = new Stripe( process.env.STRIPE_SECRET || "", {apiVersion: "2022-11-15" })
   console.log("ENV", process.env.STRIPE_SECRET)
-  const stripe = new Stripe(process.env.STRIPE_SECRET || "", {apiVersion: "2022-11-15"})
+  const stripe = new Stripe("sk_test_51MctQ9SIf6CxNJedgbhfOyU9LRuga6D4Q2OheuUV4Q7JiZx6fcoBmvcJ5zmutt8IHB6C38hw7jsMxbbTGNvUA9N400f7bT3Aqy" || "", {apiVersion: "2022-11-15"})
 
   const response = await stripe.prices.list({
     limit: 10,
