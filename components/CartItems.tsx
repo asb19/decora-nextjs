@@ -31,7 +31,7 @@ const CartItems: FunctionComponent<CartProps> = ({item}) => {
                           <p className="mt-1 text-sm text-gray-500">{getProductDescription(item.product)}</p>
                         </div>
                         <div className="flex flex-1 items-end justify-between text-sm">
-                          {/* <p className="text-gray-500">Qty {item.count}</p> */}
+                          <p className="text-gray-500">Qty {item.count}</p>
 
                           <div className="flex">
                             <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500" onClick={()=> removeItem(item.product.id)}>Remove</button>
