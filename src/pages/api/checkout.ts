@@ -29,10 +29,11 @@ export default async function handler(
         const stripe = new Stripe("sk_test_51MctQ9SIf6CxNJedgbhfOyU9LRuga6D4Q2OheuUV4Q7JiZx6fcoBmvcJ5zmutt8IHB6C38hw7jsMxbbTGNvUA9N400f7bT3Aqy" || "", {apiVersion: "2022-11-15"})
 
         const session = await stripe.checkout.sessions.create({
-            success_url: process.env.ENVIRONMENT=='local' ? 'http://localhost:3000/' : 'https://decora.clicksandcracfts.com/' + 'success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url: process.env.ENVIRONMENT=='local' ? 'http://localhost:3000/' : 'https://decora.clicksandcracfts.com/' +'cancel',
+            success_url: process.env.ENVIRONMENT=='local' ? 'http://localhost:3000/' : 'https://decora.vercel.app/' + 'fireworks?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url: process.env.ENVIRONMENT=='local' ? 'http://localhost:3000/' : 'https://decora.vercel.app/' +'cancel',
             line_items: body.lineItems,
-            mode: 'payment'
+            mode: 'payment',
+            currency: 'inr'
             
         })
         console.log("SESSION",session)
