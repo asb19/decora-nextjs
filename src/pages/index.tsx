@@ -12,27 +12,7 @@ type Props = {
   prices: Stripe.Price[]
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  // const stripe = new Stripe( process.env.STRIPE_SECRET || "", {apiVersion: "2022-11-15" })
-  console.log("ENV", process.env.STRIPE_SECRET)
-  const stripe = new Stripe("sk_test_51MctQ9SIf6CxNJedgbhfOyU9LRuga6D4Q2OheuUV4Q7JiZx6fcoBmvcJ5zmutt8IHB6C38hw7jsMxbbTGNvUA9N400f7bT3Aqy" || "", {apiVersion: "2022-11-15"})
 
-  const response = await stripe.prices.list({
-    limit: 10,
-    expand: ['data.product']
-  })
-  console.log(response )
-
-  const prices = response.data.filter(x => x.active)
-  console.log(prices)
-
-  return {
-    props: {
-      prices
-    }
-  }
-
-}
 
 
 
@@ -118,16 +98,20 @@ import React, { useState } from "react";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import Card from 'components/Card'
 import Header from 'components/Header'
+import Navbar from 'components/NavBar'
+import LatestItems from 'components/LatestItems'
+import Link from 'next/link'
 
 export default function Home({prices}: Props) {
     return (
         <div className="mx-auto container px-6 xl:px-0 py-12">
-          <Header></Header>
-            <div className="flex flex-col">
+          {/* <Header></Header> */}
+          <Navbar></Navbar>
+            {/* <div className="md:flex flex flex-col">
                 <div className="flex flex-col justify-center">
                     <div className="relative">
-                        <img className="hidden sm:block w-2/4" src="earl-wilcox-pSo0u53FF10-unsplash-big.jpg" alt="sofa" />
-                        <img className="sm:hidden w-1/4" src="earl-wilcox-pSo0u53FF10-unsplash.jpg" alt="sofa" />
+                        <img className="hidden sm:block w-fit h-1/6" src="earl-wilcox-pSo0u53FF10-unsplash-big.jpg" alt="sofa" />
+                        <img className="sm:hidden w-fit h-1/6" src="earl-wilcox-pSo0u53FF10-unsplash.jpg" alt="sofa" />
                         <div className="absolute sm:bottom-8 bottom-4 pr-10 sm:pr-0 left-4 sm:left-8 flex justify-start items-start">
                             <p className="text-3xl sm:text-4xl font-semibold leading-9 text-black">Range Comfort Sofas</p>
                         </div>
@@ -160,7 +144,21 @@ export default function Home({prices}: Props) {
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+  <main>
+        <div className="px-4 py-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-6">Welcome to our store</h1>
+          </div>
+
+          <Link href="/list" legacyBehavior >
+              <a className="flex-shrink-0">
+                visit latest items
+              </a>
+            </Link>
+        </main>
+
+            {/* <LatestItems prices={prices}></LatestItems> */}
         </div>
     );
 }
