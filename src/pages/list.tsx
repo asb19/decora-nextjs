@@ -44,7 +44,7 @@ const ListItems = ({prices}: Props) => {
                           <img className="hidden sm:block w-fit h-1/6" src="earl-wilcox-pSo0u53FF10-unsplash-big.jpg" alt="sofa" />
                           <img className="sm:hidden w-fit h-1/6" src="earl-wilcox-pSo0u53FF10-unsplash.jpg" alt="sofa" />
                           <div className="absolute sm:bottom-8 bottom-4 pr-10 sm:pr-0 left-4 sm:left-8 flex justify-start items-start">
-                              <p className="text-3xl sm:text-4xl font-semibold leading-9 text-black">Range Comfort Sofas</p>
+                              <p className="text-3xl sm:text-4xl font-semibold leading-9 text-black font-serif italic">Sustainable Ceramic Items</p>
                           </div>
                       </div>
                   </div>

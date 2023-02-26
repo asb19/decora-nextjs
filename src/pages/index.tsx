@@ -147,15 +147,14 @@ export default function Home({prices}: Props) {
             </div> */}
 
   <main>
-        <div className="px-4 py-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-6">Welcome to our store</h1>
-          </div>
-
-          <Link href="/list" legacyBehavior >
-              <a className="flex-shrink-0">
-                visit latest items
-              </a>
-            </Link>
+  <div className="flex flex-col justify-center items-center h-screen">
+      <h1 className="text-2xl font-serif italic text-orange-200 mb-8">Welcome to our world of ceramics</h1>
+      <Link href="/list" legacyBehavior>
+        <a className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Visit All Our Items
+        </a>
+      </Link>
+    </div>
         </main>
 
             {/* <LatestItems prices={prices}></LatestItems> */}
