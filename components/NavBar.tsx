@@ -27,14 +27,14 @@ function Navbar() {
     window.location.href=url.session.url
 }
   return (
-    <nav className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="sticky top-0 bg-gray-900 text-white z-30">
+      <div className="max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             {/* Logo */}
             <Link href="/" legacyBehavior >
               <a className="flex-shrink-0">
-                <img className="h-8 w-8" src="logo.jpg" alt="Logo" />
+                <img className="h-10 w-10" src="1.png" alt="Logo" />
               </a>
             </Link>
           </div>

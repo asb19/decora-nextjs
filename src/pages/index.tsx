@@ -104,7 +104,7 @@ import Link from 'next/link'
 
 export default function Home({prices}: Props) {
     return (
-        <div className="mx-auto container px-6 xl:px-0 py-12">
+        <div className="  w-full">
           {/* <Header></Header> */}
           <Navbar></Navbar>
             {/* <div className="md:flex flex flex-col">
