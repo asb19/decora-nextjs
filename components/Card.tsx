@@ -3,13 +3,14 @@ import Stripe from 'stripe'
 import CartContext from './context/CartContext'
 import { getProductImage, getProductName, getProductPrice } from './computed'
 import WishlistContext from './context/WishlistContext'
+import CartPopup from './CartPopup'
 type CardProps = {
     item: Stripe.Price
 }
 
 const Card : FunctionComponent<CardProps> = ({item }) => {
 
-    const {add, addW} = useContext(CartContext)
+    const {add, addW, items} = useContext(CartContext)
 
     const addItem = (p: Stripe.Price) => {
         add(p)
@@ -44,6 +45,7 @@ const Card : FunctionComponent<CardProps> = ({item }) => {
                                     />
                                 </svg>
                             </button>
+                            <CartPopup item={items[items.length-1]}></CartPopup>
                             <button >
                                 <svg width={24} height={24} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z" fill="#1F2937" />
