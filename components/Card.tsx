@@ -1,4 +1,4 @@
-import {FunctionComponent, useContext} from 'react'
+import {FunctionComponent, useContext, useState} from 'react'
 import Stripe from 'stripe'
 import CartContext from './context/CartContext'
 import { getProductImage, getProductName, getProductPrice } from './computed'
@@ -9,11 +9,19 @@ type CardProps = {
 }
 
 const Card : FunctionComponent<CardProps> = ({item }) => {
+    const [showPopup, setShowPopup] = useState(false);
+    const [currentItem, setCurrentItem] = useState<Stripe.Price | undefined>(undefined);
 
-    const {add, addW, items} = useContext(CartContext)
+    const {add, addW, items, currentItemToCart} = useContext(CartContext)
 
     const addItem = (p: Stripe.Price) => {
         add(p)
+        setCurrentItem(p)
+        setShowPopup(true)
+        
+        setTimeout(() => {
+            setShowPopup(false);
+          }, 3000);
 
     }
 
@@ -45,7 +53,11 @@ const Card : FunctionComponent<CardProps> = ({item }) => {
                                     />
                                 </svg>
                             </button>
-                            <CartPopup item={items[items.length-1]}></CartPopup>
+                            {showPopup && (
+        <div className="relative z-999 bottom-0 left-0 w-full p-4 bg-pink-200 block">
+          {getProductName( currentItem?.product)} added to your  cart!
+        </div>
+      )}
                             <button >
                                 <svg width={24} height={24} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z" fill="#1F2937" />
