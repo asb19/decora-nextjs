@@ -148,7 +148,7 @@ export default function Home({prices}: Props) {
 
   <main>
   <div className="flex flex-col justify-center items-center h-screen">
-      <h1 className="text-2xl font-serif italic text-orange-200 mb-8">Welcome to our world of ceramics</h1>
+      <h1 className="text-2xl font-serif italic text-orange-300 mb-8">Welcome to our world of ceramics</h1>
       <Link href="/list" legacyBehavior>
         <a className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Visit All Our Items

@@ -54,7 +54,7 @@ const Card : FunctionComponent<CardProps> = ({item }) => {
                                 </svg>
                             </button>
                             {showPopup && (
-        <div className="relative z-999 bottom-0 left-0 w-full p-4 bg-pink-200 block">
+        <div className="relative z-999 bottom-0 left-0 w-full p-4 bg-red-200 block rounded-lg">
           {getProductName( currentItem?.product)} added to your  cart!
         </div>
       )}
