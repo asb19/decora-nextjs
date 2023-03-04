@@ -12,7 +12,7 @@ const Card : FunctionComponent<CardProps> = ({item }) => {
     const [showPopup, setShowPopup] = useState(false);
     const [currentItem, setCurrentItem] = useState<Stripe.Price | undefined>(undefined);
 
-    const {add, addW, items, currentItemToCart} = useContext(CartContext)
+    const {add, addW, items} = useContext(CartContext)
 
     const addItem = (p: Stripe.Price) => {
         add(p)
