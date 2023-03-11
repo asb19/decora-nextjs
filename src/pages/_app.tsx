@@ -15,9 +15,11 @@ export type MyProduct = {
   count: number
 }
 
-export default function App({ Component, pageProps }: AppProps<{
+interface MyAppProps extends AppProps {
   session: Session;
-}>) {
+}
+
+export default function App({ Component, pageProps, session }: MyAppProps) {
   const [items, setItems] = useState<MyProduct[]>([])
   const [itemsW, setWishlist] = useState<Stripe.Price[]>([])
   const [sum, setTotal] = useState<number>(0)
@@ -79,14 +81,14 @@ export default function App({ Component, pageProps }: AppProps<{
 
 
   return(
-    // <SessionProvider session={session}>
+    <SessionProvider session={session}>
   <CartContext.Provider value={cardContext} >
   <Component {...pageProps} />
 
 
 
   </CartContext.Provider>
-  // </SessionProvider>
+  </SessionProvider>
   )
   
 }
