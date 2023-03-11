@@ -15,7 +15,7 @@ export type MyProduct = {
   count: number
 }
 
-export default function App({ Component, pageProps, session }: AppProps<{
+export default function App({ Component, pageProps }: AppProps<{
   session: Session;
 }>) {
   const [items, setItems] = useState<MyProduct[]>([])
@@ -79,14 +79,14 @@ export default function App({ Component, pageProps, session }: AppProps<{
 
 
   return(
-    <SessionProvider session={session}>
+    // <SessionProvider session={session}>
   <CartContext.Provider value={cardContext} >
   <Component {...pageProps} />
 
 
 
   </CartContext.Provider>
-  </SessionProvider>
+  // </SessionProvider>
   )
   
 }
