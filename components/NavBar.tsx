@@ -3,11 +3,23 @@ import { useContext, useState } from 'react';
 import CartItems from './CartItems';
 import CartContext from './context/CartContext';
 import WishList from './WishList';
+import { signIn, signOut, useSession } from "next-auth/react";
+import { FaUserCircle } from "react-icons/fa";
+import { AiOutlineLogout } from "react-icons/ai";
 
 function Navbar() {
     const {items, remove, itemsW, removeW, sum} = useContext(CartContext)
     const [show, setShow] = useState(false);
     const [showWish, setWishlist] = useState(false);
+    const {data: session} = useSession();
+    const {status: string} = useSession();
+    const handleSignIn = () => {
+      signIn("google");
+    };
+  
+    const handleSignOut = () => {
+      signOut();
+    };
     const checkout =async () => {
         const lineItems = items.map(x => {
         return {
@@ -38,7 +50,7 @@ function Navbar() {
               </a>
             </Link>
           </div>
-          <div className=" relative z-10" aria-labelledby="slide-over-title" role="figure" aria-modal="true">
+          <div className="relative z-10" aria-labelledby="slide-over-title" role="figure" aria-modal="true">
             <ul className="ml-4 flex items-center md:ml-6">
               {/* Cart icon */}
               <li className="ml-3 relative">
@@ -183,6 +195,31 @@ function Navbar() {
               </li>
             </ul>
           </div>
+          <div className="flex items-center">
+        {session && (
+          <>
+            <span className="mr-2 text-white">
+              {session?.user?.name || session?.user?.email}
+            </span>
+            <button
+              className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full"
+              onClick={handleSignOut}
+            >
+              <AiOutlineLogout className="mr-2" />
+              Sign out
+            </button>
+          </>
+        )}
+        {!session && (
+          <button
+            className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full"
+            onClick={handleSignIn}
+          >
+            <FaUserCircle className="mr-2" />
+            Sign in
+          </button>
+        )}
+      </div>
         </div>
       </div>
     </nav>

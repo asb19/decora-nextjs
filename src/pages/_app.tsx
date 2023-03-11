@@ -7,12 +7,17 @@ import _ from 'lodash'
 import CartContext, { CartContextProps } from 'components/context/CartContext'
 import WishListContext, { WishlistContextProps } from 'components/context/WishlistContext'
 
+import {SessionProvider} from 'next-auth/react'
+import { Session } from 'next-auth'
+
 export type MyProduct = {
   product: Stripe.Price,
   count: number
 }
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps, session }: AppProps<{
+  session: Session;
+}>) {
   const [items, setItems] = useState<MyProduct[]>([])
   const [itemsW, setWishlist] = useState<Stripe.Price[]>([])
   const [sum, setTotal] = useState<number>(0)
@@ -74,12 +79,14 @@ export default function App({ Component, pageProps }: AppProps) {
 
 
   return(
+    <SessionProvider session={session}>
   <CartContext.Provider value={cardContext} >
   <Component {...pageProps} />
 
 
 
   </CartContext.Provider>
+  </SessionProvider>
   )
   
 }
